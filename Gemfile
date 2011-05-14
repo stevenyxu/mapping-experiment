@@ -7,6 +7,9 @@ gem 'rails', '3.0.7'
 
 gem 'pg'
 
+gem 'haml'
+gem 'paperclip'
+
 # Use unicorn as the web server
 # gem 'unicorn'
 
