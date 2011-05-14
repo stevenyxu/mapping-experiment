@@ -1,4 +1,6 @@
 MappingExperiment::Application.routes.draw do
+  devise_for :users
+
   resources :round_prototypes
 
   resources :pair_prototypes

@@ -9,6 +9,8 @@ gem 'pg'
 
 gem 'haml-rails'
 gem 'paperclip'
+gem 'devise'
+gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'
 
 # Use unicorn as the web server
 # gem 'unicorn'
