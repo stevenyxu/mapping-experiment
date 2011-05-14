@@ -1,4 +1,26 @@
 MappingExperiment::Application.routes.draw do
+  resources :round_prototypes
+
+  resources :pair_prototypes
+
+  resources :test_pair_prototypes
+
+  resources :test_program_prototypes
+
+  resources :training_pair_prototypes
+
+  resources :training_program_prototypes
+
+  resources :phase_prototypes
+
+  resources :experiment_prototypes
+
+  resources :sounds
+
+  resources :clips
+
+  resources :users
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

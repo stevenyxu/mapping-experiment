@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  left_sound_id: 1
+  right_sound_id: 1
+
+two:
+  name: MyString
+  left_sound_id: 1
+  right_sound_id: 1

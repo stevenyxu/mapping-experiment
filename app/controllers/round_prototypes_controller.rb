@@ -1,0 +1,2 @@
+class RoundPrototypesController < ApplicationController
+end

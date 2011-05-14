@@ -1,0 +1,2 @@
+class TrainingProgramPrototypesController < ApplicationController
+end

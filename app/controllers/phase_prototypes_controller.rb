@@ -1,0 +1,2 @@
+class PhasePrototypesController < ApplicationController
+end

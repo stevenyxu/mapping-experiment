@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  experiment_prototype_id: 1
+  program_type: MyString
+  program_id: 1
+  name: MyString
+
+two:
+  experiment_prototype_id: 1
+  program_type: MyString
+  program_id: 1
+  name: MyString

@@ -1,0 +1,2 @@
+class PairPrototypesController < ApplicationController
+end

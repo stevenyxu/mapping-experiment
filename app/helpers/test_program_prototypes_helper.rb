@@ -1,0 +1,2 @@
+module TestProgramPrototypesHelper
+end
