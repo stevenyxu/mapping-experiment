@@ -30,4 +30,8 @@ class TrainingProgram < ActiveRecord::Base
   def description
     training_program_prototype.description
   end
+
+  def user
+    phase.user
+  end
 end

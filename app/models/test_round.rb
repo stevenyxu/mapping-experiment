@@ -20,4 +20,8 @@ class TestRound < ActiveRecord::Base
   def complete?
     !guess_id.nil?
   end
+
+  def user
+    test_program.user
+  end
 end

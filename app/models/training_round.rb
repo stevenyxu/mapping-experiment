@@ -16,4 +16,8 @@ class TrainingRound < ActiveRecord::Base
   def complete?
     complete
   end
+
+  def user
+    training_program.user
+  end
 end

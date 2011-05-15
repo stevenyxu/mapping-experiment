@@ -10,4 +10,8 @@ class Phase < ActiveRecord::Base
   def name
     phase_prototype.name
   end
+
+  def user
+    experiment.user
+  end
 end

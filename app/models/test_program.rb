@@ -30,4 +30,8 @@ class TestProgram < ActiveRecord::Base
   def description
     test_program_prototype.description
   end
+
+  def user
+    phase.user
+  end
 end
