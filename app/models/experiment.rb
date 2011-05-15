@@ -25,8 +25,13 @@ class Experiment < ActiveRecord::Base
   def generate_next_phase
     key = 0
     experiment_prototype.phase_prototypes.order('position ASC').each do |intended_phase_prototype|
-      if phases[key] && phases[key].phase_prototype == intended_phase_prototype
-        key = key + 1
+      if phases[key]
+        if phases[key].phase_prototype == intended_phase_prototype
+          key = key + 1
+        else
+          Rails.logger.error "The order of phases in the user's experiment did not match the prototype. Removing the offending phase."
+          phases[key].delete
+        end
       else
         Rails.logger.debug "Generating next phase."
         return intended_phase_prototype.create_instance(:experiment => self)

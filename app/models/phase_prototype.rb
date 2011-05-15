@@ -13,6 +13,6 @@ class PhasePrototype < ActiveRecord::Base
   end
 
   def name
-    "Phase #{position}: #{program_prototype.public_name}"
+    "#{program_prototype.public_name}"
   end
 end

@@ -4,19 +4,11 @@ class TrainingProgram < ActiveRecord::Base
   has_one :phase, :as => :program
 
   def complete?
-    Rails.logger.debug "Checking if training program is complete."
-    training_rounds.each do |round|
-      if !round.complete?
-        @first_incomplete_round = round
-        Rails.logger.debug "Incomplete round found: #{round.id}."
-        return false
-      end
-    end
-    Rails.logger.debug "Training program complete."
-    true
+    first_incomplete_round.nil?
   end
 
   def first_incomplete_round
+    return @first_incomplete_round unless @first_incomplete_round.nil?
     training_rounds.each do |round|
       return (@first_incomplete_round = round) unless round.complete?
     end
