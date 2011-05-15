@@ -1,3 +1,18 @@
 = link_to (name = @test_round.round_prototype.pair_prototype.left_sound.name), test_round_path(@test_round, :guess => name)
 = link_to (name = @test_round.round_prototype.pair_prototype.right_sound.name), test_round_path(@test_round, :guess => name)
-= audio_tag @test_round.clip.attachment.url, :controls => 'controls'
+
+#container Loading the player...
+
+= audio_tag @test_round.clip.attachment.url
+
+:javascript
+  $(function(){
+    jwplayer('container').setup({
+      flashplayer: '/swf/player.swf',
+      file: $('audio').attr('src'),
+      height: 24,
+      controlbar: 'bottom',
+      width: 300
+    });
+  });
+

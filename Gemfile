@@ -7,6 +7,7 @@ gem 'rails', '3.0.7'
 
 gem 'pg'
 
+gem 'jquery-rails'
 gem 'haml-rails'
 gem 'paperclip'
 gem 'devise'
