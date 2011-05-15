@@ -1,7 +1,12 @@
 %h1= @user.email
 %p Welcome. The experiment below takes 15 to 30 minutes to complete. All individuals other than non-native speakers of Mandarin Chinese are eligible to participate in the experiment.
 
+%h2 Experiment instructions
+%p If you can't see your options on any given page, play all the sounds on the page. If your options still don't show up, contact me at the following email address, and I will sort it out.
+%p= link_to 'syx2@cornell.edu', 'mailto:syx2@cornell.edu'
+
 %h2 Experiments
+%p Your progress is saved so you can quit at any time and return to this site to resume the experiment.
 %ul
   - @experiment_group_prototypes.each do |experiment_group_prototype|
     %li
@@ -16,11 +21,19 @@
       - else
         = link_to experiment_group_prototype.name, experiment_group_prototype
 
+%h2 Comments
+%p Please fill in below any comments you have about the experiment or about your linguistic background that I might find useful. 
+= form_for @user do |f|
+  = f.text_area :comment, :placeholder => 'Your comment goes here.', :rows => 10, :cols => 80
+  %br
+  = f.submit 'Save comment'
+
 %h2 Interest in Amazon Gift Card
 %p Upon successful completion of any of the above experiments, you are eligible for a $5 Amazon.com gift card. The first 20 people to satisfactorily* complete the survey will receive a short email questionnaire shortly after completion. Individuals who successfully complete the questionnaire will be emailed a code that can be redeemed for $5 USD of Amazon.com credit.
 %p I will do my best to notify you via this page when 20 surveys have been completed.
+%p You can also opt out of the gift card. If you do, it means that one additional person will be able to contribute to this study, and I will be doubleplusgrateful.
 %p
-  %small *: Satisfactory completion is at my sole discretion. Things that may disqualify a completion from being satisfactory for award purposes include but are not limited to abuse, multiple accounts from the location, software bugs in the survey system, unnatural response and progress rates, and an invalid email.
+  %small *: Satisfactory completion is at my sole discretion. Things that may disqualify a completion from being satisfactory for award purposes include but are not limited to abuse, multiple accounts from the location, software bugs in the survey system, unnatural response and progress rates, or an invalid email.
 
 %p
   - if @user.interest
@@ -29,8 +42,7 @@
     %strong You have yet to indicate your interest one way or another.
   - else
     %strong You are not interested in receiving the gift card.
-%ul
-  %li
-    = link_to 'I would like to be eligible for a gift card.', user_path(@user, :user => {:interest => true}), :method => :put
-  %li
-    = link_to 'No thanks, I am volunteering only.', user_path(@user, :user => {:interest => false}), :method => :put
+
+.actions
+  = link_to 'I would like to be eligible for a gift card.', user_path(@user, :user => {:interest => true}), :method => :put
+  = link_to 'No thanks, I am volunteering.', user_path(@user, :user => {:interest => false}), :method => :put

@@ -1,10 +1,14 @@
 %h1= @test_round.test_program.public_name
 %p= @test_round.test_program.description
 
-= link_to (sound = @test_round.round_prototype.pair_prototype.left_sound).name, test_round_path(@test_round, :test_round => {:guess_id => sound.id}), :method => :put
-= link_to (sound = @test_round.round_prototype.pair_prototype.right_sound).name, test_round_path(@test_round, :test_round => {:guess_id => sound.id}), :method => :put
+.sound 
+  %h2 Identify the sound
+  #container Loading the player...
 
-#container Loading the player...
+.actions
+  = link_to (sound = @test_round.round_prototype.pair_prototype.left_sound).name, test_round_path(@test_round, :test_round => {:guess_id => sound.id}), :method => :put, :class => 'hidden-until-played'
+  = link_to (sound = @test_round.round_prototype.pair_prototype.right_sound).name, test_round_path(@test_round, :test_round => {:guess_id => sound.id}), :method => :put, :class => 'hidden-until-played'
+
 
 = audio_tag @test_round.clip.attachment.url
 
@@ -16,6 +20,8 @@
       height: 24,
       controlbar: 'bottom',
       width: 300
+    }).onComplete(function(){
+      $('.actions a').addClass('played');
     });
   });
 

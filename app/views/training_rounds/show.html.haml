@@ -3,16 +3,18 @@
 
 #left.sound
   %h2= @training_round.left_clip.sound.name
-  #left-container Loading the player...
+  #left-container.wrapper Loading the player...
   = audio_tag @training_round.left_clip.attachment.url
 #right.sound
   %h2= @training_round.right_clip.sound.name
-  #right-container Loading the player...
+  #right-container.wrapper Loading the player...
   = audio_tag @training_round.right_clip.attachment.url
 
-= link_to 'Proceed', training_round_path(@training_round, :training_round => {:complete => true}), :method => :put
+.actions
+  = link_to 'Proceed', training_round_path(@training_round, :training_round => {:complete => true}), :method => :put, :id => 'next', :class => 'hidden-until-played'
 
 :javascript
+  var i;
   $(function(){
     jwplayer('left-container').setup({
       flashplayer: '/swf/player.swf',
@@ -20,6 +22,8 @@
       height: 24,
       controlbar: 'bottom',
       width: 300
+    }).onComplete(function(){
+      $('#next').addClass('left-played');
     });
     jwplayer('right-container').setup({
       flashplayer: '/swf/player.swf',
@@ -27,6 +31,8 @@
       height: 24,
       controlbar: 'bottom',
       width: 300
+    }).onComplete(function(){
+      $('#next').addClass('right-played');
     });
   });
 

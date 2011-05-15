@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110515151359) do
+ActiveRecord::Schema.define(:version => 20110515195403) do
 
   create_table "clips", :force => true do |t|
     t.integer  "sound_id"
@@ -158,6 +158,7 @@ ActiveRecord::Schema.define(:version => 20110515151359) do
     t.datetime "updated_at"
     t.boolean  "interest"
     t.boolean  "eligible"
+    t.text     "comment"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
