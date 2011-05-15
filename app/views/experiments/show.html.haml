@@ -1,0 +1,7 @@
+%h1= @experiment.public_name
+- if @experiment.complete?
+  %p Congratuations! You are done!
+- else
+  %p 
+    %span Click here to proceed in the experiment:
+    = link_to @experiment.first_incomplete_phase.name, @experiment.first_incomplete_phase

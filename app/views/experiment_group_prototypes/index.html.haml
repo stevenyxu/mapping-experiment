@@ -1,0 +1,6 @@
+%h1 Pick an experiment
+
+%ul
+  - @experiment_group_prototypes.each do |experiment_group_prototype|
+    %li
+      = link_to experiment_group_prototype.name, experiment_group_prototype

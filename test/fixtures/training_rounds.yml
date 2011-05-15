@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  training_program_id: 1
+  round_prototype_id: 1
+  left_clip_id: 1
+  right_clip_id: 1
+
+two:
+  training_program_id: 1
+  round_prototype_id: 1
+  left_clip_id: 1
+  right_clip_id: 1

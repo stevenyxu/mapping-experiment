@@ -1,0 +1,3 @@
+= link_to (name = @test_round.round_prototype.pair_prototype.left_sound.name), test_round_path(@test_round, :guess => name)
+= link_to (name = @test_round.round_prototype.pair_prototype.right_sound.name), test_round_path(@test_round, :guess => name)
+= audio_tag @test_round.clip.attachment.url, :controls => 'controls'

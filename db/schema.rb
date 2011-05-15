@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110514183806) do
+ActiveRecord::Schema.define(:version => 20110515040712) do
 
   create_table "clips", :force => true do |t|
     t.integer  "sound_id"
@@ -22,10 +22,24 @@ ActiveRecord::Schema.define(:version => 20110514183806) do
     t.datetime "updated_at"
   end
 
+  create_table "experiment_group_prototypes", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "experiment_prototypes", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "experiment_group_prototype_id"
+  end
+
+  create_table "experiments", :force => true do |t|
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "experiment_prototype_id"
   end
 
   create_table "pair_prototypes", :force => true do |t|
@@ -38,9 +52,18 @@ ActiveRecord::Schema.define(:version => 20110514183806) do
 
   create_table "phase_prototypes", :force => true do |t|
     t.integer  "experiment_prototype_id"
+    t.string   "program_prototype_type"
+    t.integer  "program_prototype_id"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "phases", :force => true do |t|
+    t.integer  "experiment_id"
+    t.integer  "phase_prototype_id"
     t.string   "program_type"
     t.integer  "program_id"
-    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -59,8 +82,8 @@ ActiveRecord::Schema.define(:version => 20110514183806) do
   add_index "rails_admin_histories", ["item", "table", "month", "year"], :name => "index_histories_on_item_and_table_and_month_and_year"
 
   create_table "round_prototypes", :force => true do |t|
-    t.string   "program_type"
-    t.integer  "program_id"
+    t.string   "program_prototype_type"
+    t.integer  "program_prototype_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "pair_prototype_id"
@@ -78,10 +101,42 @@ ActiveRecord::Schema.define(:version => 20110514183806) do
     t.datetime "updated_at"
   end
 
+  create_table "test_programs", :force => true do |t|
+    t.integer  "test_program_prototype_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "test_rounds", :force => true do |t|
+    t.integer  "test_program_id"
+    t.integer  "round_prototype_id"
+    t.string   "side_tested"
+    t.boolean  "success"
+    t.integer  "clip_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "training_program_prototypes", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "training_programs", :force => true do |t|
+    t.integer  "training_program_prototype_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "training_rounds", :force => true do |t|
+    t.integer  "training_program_id"
+    t.integer  "round_prototype_id"
+    t.integer  "left_clip_id"
+    t.integer  "right_clip_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "complete"
   end
 
   create_table "users", :force => true do |t|

@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  experiment_id: 1
+  phase_prototype_id: 1
+  program_type: MyString
+  program_id: 1
+
+two:
+  experiment_id: 1
+  phase_prototype_id: 1
+  program_type: MyString
+  program_id: 1

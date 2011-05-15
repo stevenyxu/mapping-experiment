@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  test_program_id: 1
+  round_prototype_id: 1
+  pair_id: 1
+  side_tested: MyString
+  success: false
+  left_sound_id: 1
+  right_sound_id: 1
+
+two:
+  test_program_id: 1
+  round_prototype_id: 1
+  pair_id: 1
+  side_tested: MyString
+  success: false
+  left_sound_id: 1
+  right_sound_id: 1
