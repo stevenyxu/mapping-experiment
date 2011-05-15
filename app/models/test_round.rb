@@ -18,6 +18,6 @@ class TestRound < ActiveRecord::Base
   end
 
   def complete?
-    !guess?
+    !guess_id.nil?
   end
 end

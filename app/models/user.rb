@@ -8,4 +8,11 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
 
   has_many :experiments
+
+  def experiment_in experiment_group_prototype
+    experiments.
+      joins(:experiment_prototype => :experiment_group_prototype).
+      where('experiment_group_prototypes.id = ?', experiment_group_prototype.id).
+      first
+  end
 end

@@ -1,5 +1,5 @@
-= link_to (name = @test_round.round_prototype.pair_prototype.left_sound.name), test_round_path(@test_round, :guess => name)
-= link_to (name = @test_round.round_prototype.pair_prototype.right_sound.name), test_round_path(@test_round, :guess => name)
+= link_to (sound = @test_round.round_prototype.pair_prototype.left_sound).name, test_round_path(@test_round, :test_round => {:guess_id => sound.id}), :method => :put
+= link_to (sound = @test_round.round_prototype.pair_prototype.right_sound).name, test_round_path(@test_round, :test_round => {:guess_id => sound.id}), :method => :put
 
 #container Loading the player...
 

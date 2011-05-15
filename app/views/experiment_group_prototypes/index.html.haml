@@ -3,4 +3,13 @@
 %ul
   - @experiment_group_prototypes.each do |experiment_group_prototype|
     %li
-      = link_to experiment_group_prototype.name, experiment_group_prototype
+      - if (experiment = current_user.experiment_in(experiment_group_prototype))
+        - if experiment.complete?
+          %span.complete= experiment_group_prototype.name
+          %strong complete, thank you
+        - else
+          = link_to experiment do
+            %span.in-progress= experiment_group_prototype.name
+            %strong in progress
+      - else
+        = link_to experiment_group_prototype.name, experiment_group_prototype
