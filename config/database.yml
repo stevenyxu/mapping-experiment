@@ -1,8 +1,0 @@
-development:
-  adapter: postgresql
-  encoding: unicode
-  database: mapping-experiment_development
-test:
-  adapter: postgresql
-  encoding: unicode
-  database: mapping-experiment_test
