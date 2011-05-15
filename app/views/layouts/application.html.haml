@@ -1,0 +1,13 @@
+!!!
+%html
+  %head
+    %title Chinese learning experiment
+    = stylesheet_link_tag :all
+    = javascript_include_tag %w{jquery rails jwplayer application}
+    = csrf_meta_tag
+  %body
+    = yield
+    - if user_signed_in?
+      .options
+        = link_to 'View profile', current_user
+        = link_to 'Sign out', destroy_user_session_path

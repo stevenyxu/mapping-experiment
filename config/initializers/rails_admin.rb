@@ -1,3 +1,8 @@
+RailsAdmin.authenticate_with do
+  unless current_user.id == 1
+    raise "Unauthorized access by #{current_user}"
+  end
+end
 RailsAdmin.config do |config|
   config.model RoundPrototype do
     list do

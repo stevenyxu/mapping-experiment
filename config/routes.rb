@@ -84,6 +84,6 @@ MappingExperiment::Application.routes.draw do
   #     resources :products
   #   end
 
-  root :to => "experiment_group_prototypes#index"
+  root :to => "users#me"
 
 end

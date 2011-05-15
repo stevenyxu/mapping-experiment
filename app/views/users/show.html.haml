@@ -1,0 +1,36 @@
+%h1= @user.email
+%p Welcome. The experiment below takes 15 to 30 minutes to complete. All individuals other than non-native speakers of Mandarin Chinese are eligible to participate in the experiment.
+
+%h2 Experiments
+%ul
+  - @experiment_group_prototypes.each do |experiment_group_prototype|
+    %li
+      - if (experiment = current_user.experiment_in(experiment_group_prototype))
+        - if experiment.complete?
+          %span.complete= experiment_group_prototype.name
+          %strong complete, thank you
+        - else
+          = link_to experiment do
+            %span.in-progress= experiment_group_prototype.name
+            %strong in progress
+      - else
+        = link_to experiment_group_prototype.name, experiment_group_prototype
+
+%h2 Interest in Amazon Gift Card
+%p Upon successful completion of any of the above experiments, you are eligible for a $5 Amazon.com gift card. The first 20 people to satisfactorily* complete the survey will receive a short email questionnaire shortly after completion. Individuals who successfully complete the questionnaire will be emailed a code that can be redeemed for $5 USD of Amazon.com credit.
+%p I will do my best to notify you via this page when 20 surveys have been completed.
+%p
+  %small *: Satisfactory completion is at my sole discretion. Things that may disqualify a completion from being satisfactory for award purposes include but are not limited to abuse, multiple accounts from the location, software bugs in the survey system, unnatural response and progress rates, and an invalid email.
+
+%p
+  - if @user.interest
+    %strong You have indicated that you are interested in receiving the gift card.
+  - elsif @user.interest.nil?
+    %strong You have yet to indicate your interest one way or another.
+  - else
+    %strong You are not interested in receiving the gift card.
+%ul
+  %li
+    = link_to 'I would like to be eligible for a gift card.', user_path(@user, :user => {:interest => true}), :method => :put
+  %li
+    = link_to 'No thanks, I am volunteering only.', user_path(@user, :user => {:interest => false}), :method => :put
