@@ -1,5 +1,8 @@
 %h1= @user.email
-%p Welcome. The experiment below takes 15 to 30 minutes to complete. All individuals other than non-native speakers of Mandarin Chinese are eligible to participate in the experiment.
+%p Welcome. The experiment below takes 15 to 30 minutes to complete.
+
+%h2 Executive executive summary
+%p Participate. Get a $5 Amazon.com gift card if your results are good and you're among the first 20 to complete the test. Make sure you check off your interest at the bottom of the page.
 
 %h2 Eligibility
 %p The intended population for this experiment is English-speaking individuals with no training in linguistics or Mandarin Chinese.
@@ -10,20 +13,21 @@
   %li You know what my hypothesis is.
   %li You do not have native or near-native proficiency in English.
 %p Even if these describe you, I welcome you to still take the experiment and even sign up for the gift card, but please make note of your exceptions in the comments area below so I know to take the with special consideration.
+%p Due to the desirability of responses from those in the intended population, gift cards available for special group members are capped at five. But please do let me know if you're in the special group. For SCIENCE!
 
 %h2 Experiment instructions
 %p If you can't see your options on any given page, play all the sounds on the page. If your options still don't show up, contact me at the following email address, and I will sort it out.
 %p= link_to 'syx2@cornell.edu', 'mailto:syx2@cornell.edu'
 
 %h2 Experiments
-%p Your progress is saved so you can quit at any time and return to this site to resume the experiment.
+%p Your progress is saved so you can quit at any time and return to this site to resume the experiment. Click below to begin. You will be returned to the current home page when you have completed the experiment.
 %ul
   - @experiment_group_prototypes.each do |experiment_group_prototype|
     %li
       - if (experiment = current_user.experiment_in(experiment_group_prototype))
         - if experiment.complete?
           %span.complete= experiment_group_prototype.name
-          %strong complete, thank you
+          %strong complete, thank you! remember to indicate your interest in a gift card at the bottom of the page.
         - else
           = link_to experiment do
             %span.in-progress= experiment_group_prototype.name
