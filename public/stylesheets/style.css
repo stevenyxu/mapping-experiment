@@ -64,6 +64,12 @@ div.field, div.actions {
   background-color: #ddf;
   margin-bottom: 5px;
 }
+.sound.test {
+  background-color: #dfd;
+}
+.sound.test h2 {
+  background-color: #efe;
+}
 .sound > * {
   vertical-align: middle;
 }
