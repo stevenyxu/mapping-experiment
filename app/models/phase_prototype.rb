@@ -11,4 +11,8 @@ class PhasePrototype < ActiveRecord::Base
     }.merge(options)
     Phase.create(properties)
   end
+
+  def name
+    "Phase #{position}: #{program_prototype.public_name}"
+  end
 end

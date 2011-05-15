@@ -10,4 +10,9 @@ class TrainingProgramPrototype < ActiveRecord::Base
     end
     t
   end
+
+  def public_name
+    return super unless super.nil? or super.empty?
+    name
+  end
 end

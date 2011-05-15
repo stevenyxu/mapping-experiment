@@ -10,4 +10,8 @@ class TestProgramPrototype < ActiveRecord::Base
     end
     t
   end
+
+  def public_name
+    name
+  end
 end

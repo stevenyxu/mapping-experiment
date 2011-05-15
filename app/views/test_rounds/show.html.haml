@@ -1,3 +1,6 @@
+%h1= @test_round.test_program.public_name
+%p= @test_round.test_program.description
+
 = link_to (sound = @test_round.round_prototype.pair_prototype.left_sound).name, test_round_path(@test_round, :test_round => {:guess_id => sound.id}), :method => :put
 = link_to (sound = @test_round.round_prototype.pair_prototype.right_sound).name, test_round_path(@test_round, :test_round => {:guess_id => sound.id}), :method => :put
 

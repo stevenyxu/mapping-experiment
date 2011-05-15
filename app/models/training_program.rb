@@ -22,4 +22,12 @@ class TrainingProgram < ActiveRecord::Base
     end
     @first_incomplete_round = nil
   end
+
+  def public_name
+    training_program_prototype.public_name
+  end
+
+  def description
+    training_program_prototype.description
+  end
 end
