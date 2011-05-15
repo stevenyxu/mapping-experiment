@@ -4,11 +4,11 @@
 #left.sound
   %h2= @training_round.left_clip.sound.name
   #left-container.wrapper Loading the player...
-  = audio_tag @training_round.left_clip.attachment.url
+  = link_to 'Sound', @training_round.left_clip.attachment.url, :class => 'audio hidden'
 #right.sound
   %h2= @training_round.right_clip.sound.name
   #right-container.wrapper Loading the player...
-  = audio_tag @training_round.right_clip.attachment.url
+  = link_to 'Sound', @training_round.right_clip.attachment.url, :class => 'audio hidden'
 
 .actions
   = link_to 'Proceed', training_round_path(@training_round, :training_round => {:complete => true}), :method => :put, :id => 'next', :class => 'hidden-until-played'
@@ -18,7 +18,7 @@
   $(function(){
     jwplayer('left-container').setup({
       flashplayer: '/swf/player.swf',
-      file: $('#left audio').attr('src'),
+      file: $('#left .audio').attr('href'),
       height: 24,
       controlbar: 'bottom',
       width: 300
@@ -27,7 +27,7 @@
     });
     jwplayer('right-container').setup({
       flashplayer: '/swf/player.swf',
-      file: $('#right audio').attr('src'),
+      file: $('#right .audio').attr('href'),
       height: 24,
       controlbar: 'bottom',
       width: 300

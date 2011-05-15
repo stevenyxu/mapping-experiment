@@ -4,6 +4,6 @@ class ExperimentGroupPrototypesController < ApplicationController
   end
   def show
     @experiment_group_prototype = ExperimentGroupPrototype.find(params[:id])
-    redirect_to @experiment_group_prototype.new_experiment(:user => current_user)
+    redirect_to current_user.experiment_in(@experiment_group_prototype) || @experiment_group_prototype.new_experiment(:user => current_user)
   end
 end
