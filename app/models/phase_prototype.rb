@@ -1,6 +1,7 @@
 class PhasePrototype < ActiveRecord::Base
   belongs_to :experiment_prototype
   belongs_to :program_prototype, :polymorphic => true
+  acts_as_list :scope => :experiment_prototype
 
   def create_instance options = {}
     Rails.logger.debug "Creating instance of phase #{id}: #{name}"
