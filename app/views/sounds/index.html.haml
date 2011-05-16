@@ -1,13 +1,15 @@
 %h1 Sounds
+%p Click on a sound to load its player.
 - @sounds.each do |sound|
-  = div_for sound do
+  = div_for sound, :class => 'clickable' do
     %h2= sound.name
     %div{:id => "sound_#{sound.id}_wrapper"} Loading the player
-    = link_to 'Sound', sound.random_clip.attachment.url, :class => 'audio hidden'
+    = link_to 'Sound', sound.random_clip.attachment.url, :class => 'audio'
 
 :javascript
   $(function(){
-    $('.sound').each(function(){
+    $('.sound').one('click', function(){
+      $(this).removeClass('clickable');
       var selector = this.id + '_wrapper';
       console.log(selector);
       jwplayer(selector).setup({
@@ -19,3 +21,6 @@
       });
     });
   });
+
+:css
+  .clickable { cursor: pointer; }
