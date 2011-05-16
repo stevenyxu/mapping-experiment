@@ -1,5 +1,5 @@
 %h1 Sounds
-%p Click on a sound to load its player.
+%p Click on a sound to load its player. Reload the page to get new speakers!
 - @sounds.each do |sound|
   = div_for sound, :class => 'clickable' do
     %h2= sound.name
@@ -17,6 +17,7 @@
         file: $($(this).children('a.audio')).attr('href'),
         height: 24,
         controlbar: 'bottom',
+        autostart: 'true',
         width: 300
       });
     });
