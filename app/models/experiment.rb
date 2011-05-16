@@ -33,6 +33,7 @@ class Experiment < ActiveRecord::Base
           p = phases[key]
           p.experiment_id = nil
           p.save
+          phases.reload
           return generate_next_phase
         end
       else
