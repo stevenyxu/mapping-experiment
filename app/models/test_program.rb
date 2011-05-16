@@ -3,8 +3,16 @@ class TestProgram < ActiveRecord::Base
   has_many :test_rounds, :dependent => :destroy
   has_one :phase, :as => :program
 
+  scope :with_prototype, lambda { |p|
+    where(:test_program_prototype_id => p.id)
+  }
+
   def complete?
     first_incomplete_round.nil?
+  end
+
+  def correct
+    test_rounds.select {|r| r.success? }.count
   end
 
   def first_incomplete_round
@@ -15,8 +23,20 @@ class TestProgram < ActiveRecord::Base
     @first_incomplete_round = nil
   end
 
+  def name
+    public_name
+  end
+
+  def number_of_rounds
+    test_rounds.count
+  end
+
   def public_name
     test_program_prototype.public_name
+  end
+
+  def score
+    Float(correct) / Float(number_of_rounds)
   end
 
   def description

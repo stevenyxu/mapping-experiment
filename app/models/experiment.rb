@@ -6,8 +6,10 @@ class Experiment < ActiveRecord::Base
   validates :user, :presence => true
   validates :experiment_prototype, :presence => true
 
+  scope :complete, where(:cached_complete => true)
+
   def complete?
-    first_incomplete_phase == nil
+    cached_complete || first_incomplete_phase == nil
   end
 
   def first_incomplete_phase
@@ -47,5 +49,17 @@ class Experiment < ActiveRecord::Base
 
   def public_name
     experiment_prototype.experiment_group_prototype.name
+  end
+
+  def test_programs
+    phases.where(:program_type => 'TestProgram').map(&:program)
+  end
+
+  def test_programs_of_prototype prototype
+    test_programs.select { |tp| prototype.id == tp.test_program_prototype_id }
+  end
+
+  def test_rounds
+    test_programs.map(&:test_rounds).flatten
   end
 end

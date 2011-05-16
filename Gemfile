@@ -14,6 +14,7 @@ gem 'devise'
 gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'
 gem 'silent-postgres'
 gem 'acts_as_list'
+gem 'fastercsv'
 
 # Use unicorn as the web server
 # gem 'unicorn'

@@ -21,6 +21,10 @@ class TestRound < ActiveRecord::Base
     !guess_id.nil?
   end
 
+  def success?
+    clip.sound_id == guess_id
+  end
+
   def user
     test_program.user
   end
