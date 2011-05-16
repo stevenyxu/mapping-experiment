@@ -31,6 +31,7 @@ class Experiment < ActiveRecord::Base
         else
           Rails.logger.error "The order of phases in the user's experiment did not match the prototype. Removing the offending phase."
           phases[key].delete
+          return generate_next_phase
         end
       else
         Rails.logger.debug "Generating next phase."
