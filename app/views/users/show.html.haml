@@ -1,5 +1,5 @@
 %h1= @user.email
-%p Welcome. The experiment below takes 15 to 30 minutes to complete.
+%p The experiment is over. You may still start a new experiment or complete an existing experiment, but your contribution will not be counted.
 
 %h2 Experiments
 %p Your progress is saved so you can quit at any time and return to this site to resume the experiment. Click below to begin. You will be returned to the current home page when you have completed the experiment.
@@ -16,17 +16,6 @@
             %strong in progress
       - else
         = link_to experiment_group_prototype.name, experiment_group_prototype
-
-
-%h2 Eligibility
-%p The intended population for this experiment is English-speaking individuals with no training in linguistics or Mandarin Chinese.
-%p You are in a special group for consideration purposes for the experiment if any one of the following sentences describe you:
-%ul
-  %li You have a phonetics/phonology background.
-  %li You have at least some training or proficiency in Mandarin chinese.
-  %li You know what my hypothesis is.
-  %li You do not have native or near-native proficiency in English.
-%p Even if these describe you, I welcome you to still take the experiment, but please make note of your exceptions in the comments area below so I know to take the with special consideration.
 
 %h2 Comments
 %p Please fill in below any comments you have about the experiment or about your linguistic background that I might find useful. 
