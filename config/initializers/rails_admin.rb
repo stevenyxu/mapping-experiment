@@ -19,6 +19,7 @@ RailsAdmin.config do |config|
       field :experiment_prototype_id
       field :position
       field :program_prototype_id
+      field :post_intervention
       sort_by 'experiment_prototype_id, position'
       sort_reverse false
     end

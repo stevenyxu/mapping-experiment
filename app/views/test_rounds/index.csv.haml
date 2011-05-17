@@ -1,0 +1,5 @@
+- require 'csv'
+= CSV.generate do |csv|
+  - csv << %w{round user score clip actual guess group post_intervention distinction_type experiment_complete time}
+  - @test_rounds.each do |r|
+    - csv << [ r.id, r.user.id, r.success? ? 1 : 0, r.clip_id, r.clip.sound.name, r.guess_id.nil? ? nil : r.guess.name, r.experiment_prototype.name, r.post_intervention? ? 1 : 0, r.round_prototype.pair_prototype.name, r.experiment.complete? ? 1 : 0, r.updated_at - r.created_at ]

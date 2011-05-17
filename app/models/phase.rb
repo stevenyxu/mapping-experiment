@@ -7,8 +7,16 @@ class Phase < ActiveRecord::Base
     program.complete?
   end
 
+  def experiment_prototype
+    experiment.experiment_prototype
+  end
+
   def name
     phase_prototype.name
+  end
+
+  def post_intervention?
+    phase_prototype.post_intervention == true
   end
 
   def user

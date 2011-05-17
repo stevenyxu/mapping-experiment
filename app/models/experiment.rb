@@ -6,7 +6,7 @@ class Experiment < ActiveRecord::Base
   validates :user, :presence => true
   validates :experiment_prototype, :presence => true
 
-  scope :complete, where(:cached_complete => true)
+  scope :completed, where(:cached_complete => true)
 
   def complete?
     cached_complete || first_incomplete_phase == nil

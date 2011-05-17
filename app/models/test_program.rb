@@ -23,12 +23,24 @@ class TestProgram < ActiveRecord::Base
     @first_incomplete_round = nil
   end
 
+  def experiment
+    phase.experiment
+  end
+
+  def experiment_prototype
+    phase.experiment_prototype
+  end
+
   def name
     public_name
   end
 
   def number_of_rounds
     test_rounds.count
+  end
+
+  def post_intervention?
+    phase.post_intervention?
   end
 
   def public_name
